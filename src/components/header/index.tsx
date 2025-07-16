@@ -176,7 +176,9 @@ const [selectedLang, setSelectedLang] = useState<string>("");
         <div className="container mx-auto max-[1280px]  ">
           <div className="flex justify-between items-center py-[15px] ">
             <div className="">
+              <Link to='/'>
               <img className="max-w-[150px]" src="/images/Logo.svg" alt="Sayt logosi" />
+              </Link>
             </div>
             <form className="flex justify-between px-[20px] w-[700px] h-[45px] rounded-[3px] bg-white">
               <input className="font-[Public_sans] text-[14px] text-[#77878F] font-[400] outline-none w-[550px] "
