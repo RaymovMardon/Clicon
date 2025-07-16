@@ -5,9 +5,9 @@ function Footer() {
 return (
 <div className="bg-[#191C1F] ">
   <div className="container flex justify-between py-[60px] mx-auto max-w-[1280px] ">
-    <div className="">
+    <div className="flex flex-col gap-4">
       <Link to='/'>
-      <img src="/images/footer_logo.svg" alt="Footer logo" />
+      <img className="max-w-[150px] " src="/images/footer_logo.svg" alt="Footer logo" />
       </Link>
       <div className="w-[250px] flex flex-col gap-3 ">
         <span className="font-[Public_Sans] font-[400] text-[14px] leading-[20px] tracking-[0px] text-[#77878F] ">
