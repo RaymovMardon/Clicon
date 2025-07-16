@@ -98,7 +98,7 @@ return (
       </h3>
       <ul className="flex flex-col gap-2 py-3">
         <li>
-          <Link className="group flex items-center transition-all duration-300" to='#'>
+          <Link className="group flex items-center transition-all duration-300" to='/shop'>
           <span
             className="group-hover:mr-2 w-0 h-[2px] bg-[#EBC80C] transition-all duration-500 ease-in-out group-hover:w-[24px] "></span>
           <span
@@ -193,69 +193,69 @@ return (
       <h3 className="font-[Public_Sans] font-[500] text-[16px] leading-[24px] uppercase tracking-[0px] text-[#FFFFFF]">
       Popular Tag
       </h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap py-[20px] gap-2">
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639]  px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Game
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           iPhone
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639]  px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           TV
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Asus Laptops
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Macbook 
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           SSD
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Graphics Card 
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Power Bank 
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Smart TV
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Speaker
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Tablet
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Microwave
           </Link>
         </div>
         <div className="inline-block border-2 border-[#303639] hover:border-white transition ease-in-out  hover:bg-[#303639] px-[10px] py-[2px] rounded-[2px] ">
-          <Link to='#' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
+          <Link to='/blog' className="font-[Public_Sans] text-white font-[500] text-[14px] leading-[20px] tracking-[0px] ">
           Samsung
           </Link>
         </div>
