@@ -5,6 +5,7 @@ import ShopPage from "../pages/shop";
 import FaqPage from "../pages/faq";
 import BlogPage from "../pages/blog"
 import NotFound from "../pages/notFound";
+import UserP from "../pages/user";
 
 export const router = createBrowserRouter([{
     path:"/",
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([{
             path:"*",
             element:<NotFound/>
         },
+        {
+            path:"/user",
+            element:<UserP/>
+        }
     ]
 }])
