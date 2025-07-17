@@ -1,0 +1,74 @@
+.form_faq {
+  position: relative;
+  max-width: 428px;
+  max-height: 384px;
+  background-color: #FBF4CE;
+  padding: 2rem;
+  border-radius: 4px;
+}
+.form_faq input {
+  background-color: white;
+  outline: none;
+}
+.form_faq h3 {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.faq_wrp {
+  padding: 50px 0;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto auto;
+}
+.faq_wrp h2 {
+  margin: 2rem 0;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0%;
+}
+.faq_wrp p {
+  color: #475156;
+}
+.faq_wrp ul {
+  padding: 10px;
+}
+.faq_wrp li {
+  padding: 3px 0;
+}
+
+.faq_modal {
+  position: absolute;
+  width: 80vw;
+  z-index: 5;
+  background-color: #FBF4CE;
+  padding: 20px;
+  border-radius: 8px;
+}
+.faq_modal p {
+  font-size: 22px;
+}
+.faq_modal button {
+  background-color: yellowgreen;
+  padding: 5px 20px;
+  margin: 5px 0;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.faq_modal button:hover {
+  background-color: rgb(189, 240, 87);
+}
+
+@media only screen and (max-width: 968px) {
+  .faq_wrp {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: auto;
+    justify-items: center;
+  }
+}/*# sourceMappingURL=faq.module.css.map */
