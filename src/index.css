@@ -1,12 +1,18 @@
 @import "tailwindcss";
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
 .custom_container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-@import "tw-animate-css";
+/*not edit this code for Faq page */
+.MuiPaper-root > h3 > .Mui-expanded {
+  background-color: #fa8232;
+  color: white;
+  transition: all 0.3s linear;
+}
 
+@import "tw-animate-css";
