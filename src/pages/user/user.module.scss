@@ -1,0 +1,45 @@
+.user_form{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+    form{
+
+max-width: 424px;
+button{
+    font-weight: 500;
+font-style: Medium;
+font-size: 16px;
+
+line-height: 24px;
+letter-spacing: 0%;
+    cursor: pointer;
+    margin: 10px 0;
+    padding: 8px 0;
+    background-color: #FA8232;
+    color: white;
+    border-radius: 3px;
+}
+
+label{
+    font-weight: 400;
+font-style: Medium;
+font-size: 16px;
+
+line-height: 24px;
+letter-spacing: 0%;
+color:#475156;
+    margin: 5px 0 3px;
+}
+input{
+    margin: 3px 0;
+    font-weight:500;
+    
+}
+button:hover{
+    background-color: #f8751e;
+}
+    }
+}
