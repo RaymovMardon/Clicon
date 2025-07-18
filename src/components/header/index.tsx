@@ -8,16 +8,34 @@ import { PiArrowsCounterClockwise, PiHeadphones, PiInfo, PiMapPinLine, PiPhoneCa
 "react-icons/pi";
 import { Link } from "react-router-dom";
 
-const options = [
+type LangValue = "man" | "woman" | "other";
+type CurrencyValue = "usd" | "eur";
+interface LangOption {
+  label: string;
+  short: string;
+  value: LangValue;
+  icon: string;
+}
+
+interface CurrencyOption {
+  label: string;
+  short: string;
+  value: CurrencyValue;
+}
+const options:LangOption[] = [
 { label: "English", short: "Eng", value: "man",icon:"/images/engFlag.svg"},
 { label: "Mandarin", short: "Man", value: "woman",icon:"/images/manFlag.svg" },
 { label: "Russian", short: "Rus", value: "other",icon:"/images/rusFlag.svg" },
 ];
-const infor = [
+const infor:CurrencyOption[] = [
 { label: "Dollar (USD)", short: "USD", value: "usd" },
 { label: "Euro (EUR)", short: "EUR", value: "eur" },
 ]
-const categories = [
+interface Category {
+  label: string;
+  subItems: string[];
+}
+const categories:Category[] = [
 {
 label: "Computer & Laptop",
 subItems: ["Asus", "Dell", "HP", "Macbook"]
