@@ -100,7 +100,7 @@ const [selectedLang, setSelectedLang] = useState<string>("");
     }
     return (
     <>
-      <div className="bg-[#1B6392]">
+      <div className="bg-[#1B6392] sticky top-0 z-50">
         <div className="border-b-2 border-[#ffffff25] ">
           <div className="container mx-auto max-w-[1280px] ">
             <div className="flex items-center py-[8px] justify-between">
