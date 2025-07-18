@@ -194,7 +194,7 @@ const [selectedLang, setSelectedLang] = useState<string>("");
               <Link to='/#'>
               <FaRegHeart className="text-[28px] text-white" />
               </Link>
-              <Link to='/#'>
+              <Link to='/user'>
               <PiUserBold className="text-[28px] text-white" />
               </Link>
             </div>
