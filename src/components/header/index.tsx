@@ -176,7 +176,9 @@ const [selectedLang, setSelectedLang] = useState<string>("");
         <div className="container mx-auto max-[1280px]  ">
           <div className="flex justify-between items-center py-[15px] ">
             <div className="">
+              <Link to='/'>
               <img className="max-w-[150px]" src="/images/Logo.svg" alt="Sayt logosi" />
+              </Link>
             </div>
             <form className="flex justify-between px-[20px] w-[700px] h-[45px] rounded-[3px] bg-white">
               <input className="font-[Public_sans] text-[14px] text-[#77878F] font-[400] outline-none w-[550px] "
@@ -264,7 +266,7 @@ const [selectedLang, setSelectedLang] = useState<string>("");
               </Link>
             </div>
             <div className="flex">
-              <Link className="flex justify-center items-center group gap-1" to='/track-order'>
+              <Link className="flex justify-center items-center group gap-1" to='/faq'>
               <PiInfo className="w-[24px] h-[24px] group-hover:text-[#FA8232] text-[#5F6C72] " />
               <span
                 className="text-[14px] font-[500] font-[Public_Sans] text-[#5F6C72] group-hover:text-[#FA8232] ">Need
