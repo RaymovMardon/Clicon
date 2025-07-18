@@ -48,13 +48,24 @@ letter-spacing: 0%;
     }
 }
 .faq_modal{
-    position: absolute;
-    width: 80vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:0.5rem;
+    width: 50vw;
     z-index: 5;
     background-color: #FBF4CE;
     padding: 20px;
     border-radius: 8px;
+    div{
+        margin: 0 auto;
+        img{
+            margin: 0 auto;
+        }
+    }
     p{
+        text-align: center;
         font-size: 22px;
 
     }
@@ -78,5 +89,14 @@ button:hover{
         gap:2rem;
         grid-template-columns: auto;
         justify-items: center;}
-    
+        .form_faq{
+            max-height: fit-content;
+           
+        }
+}
+@media only screen and (max-width:500px) {
+.form_faq{
+    text-align: center;
+    padding: 1rem;
+}
 }
