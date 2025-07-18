@@ -55,8 +55,7 @@ const ProductGridSections: React.FC = () => {
             {section.products.map((item, i) => (
               <div
                 key={i}
-                className="border p-3 rounded-lg shadow-sm hover:shadow-md transition"
-              >
+                className="border p-3 rounded-lg shadow-sm hover:shadow-md transition">
                 <div className="w-full h-28 bg-gray-100 mb-2 rounded-lg" />
                 <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
                 <p className="text-blue-500 font-semibold">{item.price}</p>
