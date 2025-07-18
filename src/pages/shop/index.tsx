@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import ReactSlider from "react-slider";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 
 interface Product {
   id: number;
@@ -136,6 +138,7 @@ const ShopPage: React.FC = () => {
               Price Range: ${priceRange[0]} - ${priceRange[1]}
             </h2>
             <ReactSlider
+
               className="w-full h-2 bg-gray-300 rounded relative mt-2"
               thumbClassName="bg-blue-500 h-5 w-5 rounded-full cursor-pointer shadow border-2 border-white -top-1"
               trackClassName="bg-blue-300 h-2 rounded"
