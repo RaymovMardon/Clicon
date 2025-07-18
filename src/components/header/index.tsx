@@ -8,16 +8,34 @@ import { PiArrowsCounterClockwise, PiHeadphones, PiInfo, PiMapPinLine, PiPhoneCa
 "react-icons/pi";
 import { Link } from "react-router-dom";
 
-const options = [
+type LangValue = "man" | "woman" | "other";
+type CurrencyValue = "usd" | "eur";
+interface LangOption {
+  label: string;
+  short: string;
+  value: LangValue;
+  icon: string;
+}
+
+interface CurrencyOption {
+  label: string;
+  short: string;
+  value: CurrencyValue;
+}
+const options:LangOption[] = [
 { label: "English", short: "Eng", value: "man",icon:"/images/engFlag.svg"},
 { label: "Mandarin", short: "Man", value: "woman",icon:"/images/manFlag.svg" },
 { label: "Russian", short: "Rus", value: "other",icon:"/images/rusFlag.svg" },
 ];
-const infor = [
+const infor:CurrencyOption[] = [
 { label: "Dollar (USD)", short: "USD", value: "usd" },
 { label: "Euro (EUR)", short: "EUR", value: "eur" },
 ]
-const categories = [
+interface Category {
+  label: string;
+  subItems: string[];
+}
+const categories:Category[] = [
 {
 label: "Computer & Laptop",
 subItems: ["Asus", "Dell", "HP", "Macbook"]
@@ -176,7 +194,9 @@ const [selectedLang, setSelectedLang] = useState<string>("");
         <div className="container mx-auto max-[1280px]  ">
           <div className="flex justify-between items-center py-[15px] ">
             <div className="">
+              <Link to='/'>
               <img className="max-w-[150px]" src="/images/Logo.svg" alt="Sayt logosi" />
+              </Link>
             </div>
             <form className="flex justify-between px-[20px] w-[700px] h-[45px] rounded-[3px] bg-white">
               <input className="font-[Public_sans] text-[14px] text-[#77878F] font-[400] outline-none w-[550px] "
@@ -192,7 +212,7 @@ const [selectedLang, setSelectedLang] = useState<string>("");
               <Link to='/#'>
               <FaRegHeart className="text-[28px] text-white" />
               </Link>
-              <Link to='/#'>
+              <Link to='/user'>
               <PiUserBold className="text-[28px] text-white" />
               </Link>
             </div>
@@ -264,7 +284,7 @@ const [selectedLang, setSelectedLang] = useState<string>("");
               </Link>
             </div>
             <div className="flex">
-              <Link className="flex justify-center items-center group gap-1" to='/track-order'>
+              <Link className="flex justify-center items-center group gap-1" to='/faq'>
               <PiInfo className="w-[24px] h-[24px] group-hover:text-[#FA8232] text-[#5F6C72] " />
               <span
                 className="text-[14px] font-[500] font-[Public_Sans] text-[#5F6C72] group-hover:text-[#FA8232] ">Need

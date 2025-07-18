@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from './faq.module.scss';
 import { useForm, type SubmitHandler } from "react-hook-form";
 import axios from 'axios'
+import imgCh from "../../../public/images/Check.svg"
 import { useState } from 'react';
 type FormValues = {
     Subject: string
@@ -54,7 +55,8 @@ reset();
 <section className='custom_container'>
     <div className={styles.faq_wrp}>
         {modal?(<div className={styles.faq_modal}>
-<p>Massage success send!</p>
+          <div><img src={imgCh} alt="ok" /></div>
+<p>Your message successfully send!</p>
 <button onClick={()=>{setModal(!modal)}}>Ok</button>
         </div>):""}
     <div>
@@ -218,7 +220,7 @@ reset();
   
 
   <input
-    className="!bg-[#FA8232] text-white px-4 py-2 rounded cursor-pointer"
+    className="!bg-[#FA8232]  text-white px-4 py-2 rounded cursor-pointer hover:shadow-[inset_0_0_2px_2px_rgb(255,255,255)]"
     type="submit"
     value="Send message"
   />

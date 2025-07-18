@@ -4,6 +4,9 @@ import Homepage from "../pages/home";
 import ShopPage from "../pages/shop";
 import FaqPage from "../pages/faq";
 import ProductDetails from "../pages/product/index";
+import BlogPage from "../pages/blog"
+import NotFound from "../pages/notFound";
+import UserP from "../pages/user";
 
 export const router = createBrowserRouter([{
     path:"/",
@@ -22,8 +25,20 @@ export const router = createBrowserRouter([{
             element:<FaqPage/>
         },
         {
-            path:"/product",
-            element:<ProductDetails />
+            path:"/blog",
+            element:<BlogPage/>
         },
+        {
+            path:"*",
+            element:<NotFound/>
+        },
+        {
+            path:"/product",
+            element:<ProductDetails/>
+        },
+        {
+            path:"/user",
+            element:<UserP/>
+        }
     ]
 }])

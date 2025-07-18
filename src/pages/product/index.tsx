@@ -4,12 +4,22 @@ import { HiMiniArrowPath } from "react-icons/hi2";
 import img1 from '../../../public/images/payProduct.png';
 import img2 from '../../../public/images/notebook.png';
 import ProductGridSections from "../../components/card/CardSection";
+import { useState } from "react";
 
 const ProductDetails = () => {
+  const [count, setCount] = useState(0);
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+  const handleDecrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
   return (
     <>
-    <section className="bg-gray-200 py-10 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow-md">
+    <section className="bg-gray-200 py-4 px-4 md:px-10">
+      <div className="max-w-7xl mx-auto bg-white py-8 px-2 rounded-xl shadow-md">
         <main className="flex flex-col md:flex-row gap-6">
           <div className="md:w-1/2">
             <img src={img2} alt="product" className="w-full rounded-md" />
@@ -21,9 +31,7 @@ const ProductDetails = () => {
               <span className="font-semibold text-gray-800 ml-2">4.7 Star Rating</span>
               <span className="text-gray-600">(21,671 User feedback)</span>
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">
-              2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-900">2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
               <div className="flex gap-2"><span className="text-gray-600">Sku:</span><span className="font-medium">A264671</span></div>
               <div className="flex gap-2"><span className="text-gray-600">Brand:</span><span className="font-medium">Apple</span></div>
@@ -37,15 +45,16 @@ const ProductDetails = () => {
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <div className="flex items-center border rounded-md px-3 py-2 gap-4 text-xl font-bold">
-                <button className="cursor-pointer">-</button>
-                <span>0</span>
-                <button className="cursor-pointer">+</button>
+                <button className="cursor-pointer" onClick={handleDecrement}>-</button>
+                <span>{count}</span>
+                <button className="cursor-pointer" onClick={handleIncrement}>+</button>
               </div>
               <button className="flex items-center gap-2 px-12 py-2.5 text-white rounded-md bg-[#FA8232] hover:opacity-85 cursor-pointer">Add to Cart <SlBasket /></button>
               <button className="px-6 py-2 rounded-md border border-[#FA8232] text-[#FA8232] font-[600] hover:bg-gray-100 cursor-pointer">Buy Now</button>
             </div>
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-700">
               <div className="flex items-center gap-2 cursor-pointer">
+                {}
                 <FaRegHeart />
                 <p>Add to Wishlist</p>
               </div>
