@@ -47,7 +47,7 @@ const productSections: Section[] = [
 
 const ProductGridSections: React.FC = () => {
   return (
-    <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+    <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 py-6">
       {productSections.map((section, idx) => (
         <div key={idx}>
           <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
