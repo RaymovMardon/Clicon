@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-
 interface Product {
   id: number;
   title: string;
@@ -138,7 +137,6 @@ const ShopPage: React.FC = () => {
               Price Range: ${priceRange[0]} - ${priceRange[1]}
             </h2>
             <ReactSlider
-
               className="w-full h-2 bg-gray-300 rounded relative mt-2"
               thumbClassName="bg-blue-500 h-5 w-5 rounded-full cursor-pointer shadow border-2 border-white -top-1"
               trackClassName="bg-blue-300 h-2 rounded"
@@ -155,7 +153,7 @@ const ShopPage: React.FC = () => {
           {/* Brands */}
           <div>
             <h2 className="text-lg font-semibold mb-2">Brands</h2>
-            <div className="max-h-60 overflow-y-auto space-y-1">
+            <div className="max-h-60 overflow-y-auto space-y-1 mb-2">
               {uniqueBrands.map((brand) => (
                 <label key={brand} className="block text-sm">
                   <input
@@ -168,62 +166,97 @@ const ShopPage: React.FC = () => {
                 </label>
               ))}
             </div>
+            {brands.length > 0 && (
+              <button
+                onClick={() => setBrands([])}
+                className="text-xs text-blue-600 underline hover:text-blue-800"
+              >
+                Reset Brands
+              </button>
+            )}
           </div>
         </div>
 
         {/* Products */}
         <div className="w-full md:w-3/4 space-y-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {first16.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition"
-              >
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  className="w-full h-48 object-cover rounded mb-3"
-                />
-                <h3 className="font-semibold text-lg">{product.title}</h3>
-                <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
-                <p className="text-blue-600 font-bold mt-1">${product.price}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Swiper */}
-          {restGrouped.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-semibold mb-4 text-blue-800">Explore More</h2>
-              <Swiper
-                modules={[Navigation, Pagination]}
-                spaceBetween={30}
-                navigation
-                pagination={{ clickable: true }}
-                slidesPerView={1}
-              >
-                {restGrouped.map((group, idx) => (
-                  <SwiperSlide key={idx}>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {group.map((product) => (
-                        <div
-                          key={product.id}
-                          className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition"
-                        >
-                          <img
-                            src={product.thumbnail}
-                            alt={product.title}
-                            className="w-full h-48 object-cover rounded mb-3"
-                          />
-                          <h3 className="font-semibold text-lg">{product.title}</h3>
-                          <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
-                          <p className="text-blue-600 font-bold mt-1">${product.price}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </SwiperSlide>
+          {first16.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {first16.map((product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+                  >
+                    <img
+                      src={product.thumbnail}
+                      alt={product.title}
+                      className="w-full h-48 object-cover rounded mb-3"
+                    />
+                    <h3 className="font-semibold text-lg">{product.title}</h3>
+                    <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
+                    <p className="text-blue-600 font-bold mt-1">${product.price}</p>
+                  </div>
                 ))}
-              </Swiper>
+              </div>
+
+              {/* Swiper */}
+              {restGrouped.length > 0 && (
+                <div>
+                  <h2 className="text-2xl font-semibold mb-4 text-blue-800">Explore More</h2>
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={30}
+                    navigation
+                    pagination={{ clickable: true }}
+                    slidesPerView={1}
+                  >
+                    {restGrouped.map((group, idx) => (
+                      <SwiperSlide key={idx}>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {group.map((product) => (
+                            <div
+                              key={product.id}
+                              className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition"
+                            >
+                              <img
+                                src={product.thumbnail}
+                                alt={product.title}
+                                className="w-full h-48 object-cover rounded mb-3"
+                              />
+                              <h3 className="font-semibold text-lg">{product.title}</h3>
+                              <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
+                              <p className="text-blue-600 font-bold mt-1">${product.price}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center py-20">
+              <img
+                src="https://www.svgrepo.com/show/382106/empty-box.svg"
+                alt="No items"
+                className="w-32 h-32 mb-4 opacity-70 animate-bounce"
+              />
+              <h2 className="text-xl font-semibold text-gray-700">Oops! No items found</h2>
+              <p className="text-sm text-gray-500 mt-1">
+                Try choosing a different category or resetting your filters.
+              </p>
+              <button
+                onClick={() => {
+                  setCategory("");
+                  setBrands([]);
+                  setPriceRange([0, 1000]);
+                  setSortBy("");
+                }}
+                className="mt-6 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition duration-300"
+              >
+                Reset All Filters
+              </button>
             </div>
           )}
         </div>
