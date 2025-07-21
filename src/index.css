@@ -7,12 +7,43 @@
   margin: 0 auto;
   padding: 0 20px;
 }
-
-/*not edit this code for Faq page */
 .MuiPaper-root > h3 > .Mui-expanded {
   background-color: #fa8232;
   color: white;
   transition: all 0.3s linear;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.loader {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #f97316;
+  border-color: #f97316 transparent #f97316 transparent;
+  animation: loader-spin 1.2s linear infinite;
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 @import "tw-animate-css";
