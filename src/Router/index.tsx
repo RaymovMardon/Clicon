@@ -29,7 +29,7 @@ export const router = createBrowserRouter([{
             element:<ProductDetails />
         },
         {
-            path:"/blog",
+                path:"/blog",
             element:<BlogPage/>
         },
         {
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([{
             element:<NotFound/>
         },
         {
-            path:"/product",
+            path:"/product/:id",
             element:<ProductDetails/>
         },
         {
