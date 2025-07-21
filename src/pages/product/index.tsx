@@ -1,13 +1,12 @@
-// ProductDetails.tsx
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaFacebook, FaRegCopy, FaRegHeart, FaStar, FaTwitter } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { HiMiniArrowPath } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/thumbs';
 import { Navigation, Thumbs } from 'swiper/modules';
 import ProductGridSections from "@/components/card/CardSection";
 
@@ -28,11 +27,14 @@ const ProductDetails = () => {
   const [mainImage, setMainImage] = useState<string>('');
   const [count, setCount] = useState(1);
 
+  console.log(id);
+
   useEffect(() => {
-    fetch(`https://dummyjson.com/products?sortBy=title&order=asc/${id}`)
+    fetch(`https://dummyjson.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        const fakeImages = [data.image, data.image, data.image, data.image, data.image];
+        console.log(data);
+        const fakeImages = data?.images;
         setProduct({ ...data, images: fakeImages });
         setMainImage(data.image);
       });
@@ -60,25 +62,15 @@ const ProductDetails = () => {
 
   return (
     <>
-      <section className="bg-gray-200 py-10 px-4 md:px-10">
+      <section className="bg-gray-200 py-4 px-4 md:px-10">
         <div className="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow-md">
           <main className="flex flex-col md:flex-row gap-6">
             <div className="md:w-1/2">
               <img src={mainImage} alt="product" className="w-full rounded-md h-[400px] object-contain" />
-              <Swiper
-                onSwiper={setThumbsSwiper}
-                slidesPerView={5}
-                spaceBetween={10}
-                modules={[Thumbs]}
-                className="mt-4"
-              >
+              <Swiper onSwiper={setThumbsSwiper} slidesPerView={5} spaceBetween={10} modules={[Thumbs]} className="mt-4">
                 {product.images?.map((img, index) => (
                   <SwiperSlide key={index}>
-                    <img
-                      src={img}
-                      onClick={() => setMainImage(img)}
-                      className="w-full h-20 object-contain border rounded cursor-pointer hover:scale-105 transition"
-                    />
+                    <img src={img} onClick={() => setMainImage(img)} className="w-full h-20 object-contain border rounded cursor-pointer hover:scale-105 transition" />
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -105,13 +97,13 @@ const ProductDetails = () => {
                 <button className="bg-yellow-400 text-black text-sm font-bold px-3 py-1 rounded">20% OFF</button>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-8 py-6">
-                <div className="flex items-center border rounded-md px-4 py-2 gap-10 text-xl font-bold">
-                  <button onClick={Decrement} className="cursor-pointer">-</button>
+                <div className="flex items-center border rounded-md px-4 py-2 gap-6 text-xl font-bold">
+                  <button onClick={Decrement} className="cursor-pointer px-2 hover:bg-gray-100">-</button>
                   <span>{count}</span>
-                  <button onClick={Increment} className="cursor-pointer">+</button>
+                  <button onClick={Increment} className="cursor-pointer px-2 hover:bg-gray-100">+</button>
                 </div>
-                <button onClick={handleAddToCart} className="flex items-center text-white gap-2 px-14 py-2.5 rounded-md font-[600] bg-[#FA8232] hover:opacity-90">Add to Cart <SlBasket /></button>
-                <button onClick={handleBuyNow} className="border border-[#FA8232] px-8 py-2.5 rounded-md text-gray-800 font-[600] hover:bg-gray-100">Buy Now</button>
+                <button onClick={handleAddToCart} className="flex items-center text-white gap-2 px-14 py-2.5 rounded-md font-[600] bg-[#FA8232] hover:opacity-85 active:scale-96 cursor-pointer duration-325">Add to Cart <SlBasket /></button>
+                <button onClick={handleBuyNow} className="border border-[#FA8232] px-8 py-2.5 rounded-md text-gray-800 font-[600] hover:opacity-85 active:scale-96 cursor-pointer duration-325">Buy Now</button>
               </div>
               <div className="flex flex-wrap items-center gap-6 text-sm text-gray-700">
                 <div className="flex items-center gap-2 cursor-pointer">
@@ -137,6 +129,7 @@ const ProductDetails = () => {
           </main>
         </div>
       </section>
+
       <section className="bg-white mt-10 px-4 py-6 rounded-lg shadow-sm">
         <div className="container mx-auto">
           <div className="flex justify-center gap-16 pb-10">
