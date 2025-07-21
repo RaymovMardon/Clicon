@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // import 'swiper/css';
 // import 'swiper/css/navigation';
 // import 'swiper/css/thumbs';
-import { Navigation, Thumbs } from 'swiper/modules';
+import { Thumbs } from 'swiper/modules';
 import ProductGridSections from "@/components/card/CardSection";
 
 interface Product {
@@ -23,7 +23,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
-  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [ setThumbsSwiper] = useState<any>(null);
   const [mainImage, setMainImage] = useState<string>('');
   const [count, setCount] = useState(1);
 
