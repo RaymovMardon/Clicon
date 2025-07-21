@@ -29,7 +29,7 @@ function Hero() {
   return (
     <div className="container mx-auto max-w-[1280px] ">
       <div className="">
-        <div className="flex py-[10px] gap-4">
+        <div className="flex py-[30px] gap-4">
           <div className="w-full mx-auto ">
             <div className="relative w-full h-[520px] overflow-hidden rounded-xl shadow-lg">
               {images.map((slide, index) => (
