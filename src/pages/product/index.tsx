@@ -27,16 +27,16 @@ const ProductDetails = () => {
   const [mainImage, setMainImage] = useState<string>('');
   const [count, setCount] = useState(1);
 
-  console.log(id);
-
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const fakeImages = data?.images;
         setProduct({ ...data, images: fakeImages });
         setMainImage(data.image);
+        if (fakeImages && fakeImages.length > 0) {
+          setMainImage(fakeImages[0]);
+        }        
       });
   }, [id]);
 
@@ -51,11 +51,23 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = () => {
-    navigate('/shop');
+    if (!product) return;
+    navigate('/shop', {
+      state: {
+        product,
+        quantity: count
+      }
+    });
   };
-
+  
   const handleBuyNow = () => {
-    navigate('/user');
+    if (!product) return;
+    navigate('/user', {
+      state: {
+        product,
+        quantity: count
+      }
+    });
   };
 
   if (!product) return <div className="text-center">Yuklanmoqda...</div>;
@@ -66,11 +78,11 @@ const ProductDetails = () => {
         <div className="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow-md">
           <main className="flex flex-col md:flex-row gap-6">
             <div className="md:w-1/2">
-              <img src={mainImage} alt="product" className="w-full rounded-md h-[400px] object-contain" />
-              <Swiper onSwiper={setThumbsSwiper} slidesPerView={5} spaceBetween={10} modules={[Thumbs]} className="mt-4">
+              <img src={mainImage} alt="product" className="w-full rounded-md h-[340px] object-cover" />
+              <Swiper onSwiper={setThumbsSwiper} slidesPerView={5} spaceBetween={10} modules={[Thumbs]} className="mt-4 overflow-hidden flex justify-between">
                 {product.images?.map((img, index) => (
-                  <SwiperSlide key={index}>
-                    <img src={img} onClick={() => setMainImage(img)} className="w-full h-20 object-contain border rounded cursor-pointer hover:scale-105 transition" />
+                  <SwiperSlide key={index} >
+                    <img src={img} onClick={() => setMainImage(img)} className="w-full h-22 py-2 object-cover bg-gray-200 border border-gray-300 rounded cursor-pointer hover:scale-105 duration-75" />
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -84,7 +96,7 @@ const ProductDetails = () => {
                 <span className="font-semibold text-gray-800 ml-2">4.7 Star Rating</span>
                 <span className="text-gray-600">(21,671 User feedback)</span>
               </div>
-              <h2 className="text-xl font-semibold text-gray-900">{product.title}</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">{product.title}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                 <div className="flex gap-2"><span className="text-gray-600">Sku:</span><span className="font-medium">A264671</span></div>
                 <div className="flex gap-2"><span className="text-gray-600">Brand:</span><span className="font-medium">Apple</span></div>
@@ -92,8 +104,8 @@ const ProductDetails = () => {
                 <div className="flex gap-2"><span className="text-gray-600">Category:</span><span className="font-medium">Electronics Devices</span></div>
               </div>
               <div className="flex items-center gap-4">
-                <h2 className="text-2xl text-blue-500 font-semibold">${product.price}</h2>
-                <p className="text-lg text-gray-500 line-through">${(product.price * 1.2).toFixed(2)}</p>
+                <h2 className="text-2xl text-blue-500 font-semibold">${product.price*count}</h2>
+                <p className="text-lg text-gray-500 line-through">${(product.price * 1.2 * count).toFixed(2)}</p>
                 <button className="bg-yellow-400 text-black text-sm font-bold px-3 py-1 rounded">20% OFF</button>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-8 py-6">
@@ -176,6 +188,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </section>
+
       <ProductGridSections />
     </>
   );
