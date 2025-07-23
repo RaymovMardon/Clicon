@@ -3,10 +3,11 @@ import { LucideEye, LucideHeart, LucideShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function TodayBestDeals() {
   const [selected, setSelected] = useState<any[]>([]);
+  const {id} = useParams()
   const GetItems = async () => {
     try {
       const res = await axios.get(
@@ -75,7 +76,11 @@ function TodayBestDeals() {
           <div className="py-[20px] flex ">
             <div className="w-[375px] border-2 border-[#E4E7E9] p-[25px]  ">
               <div className="py-[20px] w-full h-[310px] ">
-                <img className="w-full h-full object-cover " src="/images/joistik2.png" alt="Joistik images" />
+                <img
+                  className="w-full h-full object-cover "
+                  src="/images/joistik2.png"
+                  alt="Joistik images"
+                />
               </div>
               <div className="flex gap-1 py-2 items-center">
                 <FaStar className="text-[#EBC80C] " />
@@ -111,16 +116,16 @@ function TodayBestDeals() {
                   <LucideHeart className="text-[#191C1F] " />
                 </Link>
                 <Link
-                  className="flex gap-3 px-[10px] py-[4px] h-full rounded-[3px] items-center bg-[#FA8232] "
+                  className="flex gap-3 px-[10px] group py-[4px] h-full rounded-[3px] items-center bg-[#FA8232] hover:bg-[white] border-3 border-[#FA8232] "
                   to="#"
                 >
-                  <LucideShoppingCart className="text-white" />
-                  <span className="font-[Public_Sans] font-[700] text-[white] text-[14px] leading-[48px] tracking-[1.2%] uppercase">
+                  <LucideShoppingCart className="group-hover:text-[#FA8232] text-white" />
+                  <span className="font-[Public_Sans] group-hover:text-[#FA8232] font-[700] text-[white] text-[14px] leading-[48px] tracking-[1.2%] uppercase">
                     Add to card
                   </span>
                 </Link>
                 <Link
-                  className="flex items-center justify-center rounded-[3px] bg-[#FFE7D6] w-[55px] h-full"
+                  className="flex  items-center justify-center rounded-[3px] bg-[#FFE7D6] w-[55px] h-full"
                   to="#"
                 >
                   <LucideEye className="text-[#191C1F] " />
@@ -128,11 +133,13 @@ function TodayBestDeals() {
               </div>
             </div>
             <div className="grid grid-cols-4 ">
-              {selected.slice(0, 8).map((product,index) => (
+              {selected.slice(0, 8).map((product, index) => (
                 <div
                   key={product.id}
-                  className={`group relative border-2 border-[#E4E7E9] p-4 overflow-hidden ${index < 4 ? 'border-b' : ''}
-        ${index % 4 !== 3 ? 'border-r' : ''}`}
+                  className={`group relative border-2 border-[#E4E7E9] p-4 overflow-hidden ${
+                    index < 4 ? "border-b" : ""
+                  }
+                     ${index % 4 !== 3 ? "border-r" : ""}`}
                 >
                   <div className="relative w-full h-[220px] mb-3 overflow-hidden">
                     <img
@@ -142,22 +149,25 @@ function TodayBestDeals() {
                     />
                     <div className="absolute inset-0 flex rounded-[5px] items-center justify-between px-3 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300">
                       <Link
-                        className="flex items-center justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px]"
+                        className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] translate-x-[-70px] group-hover:translate-x-[0px] transition-transform ease-in-out duration-400 rounded-[50%] w-[50px] h-[50px]"
                         to="#"
                       >
-                        <LucideHeart  size={24} className="text-[#191C1F] " />
+                        <LucideHeart size={24} className="text-[#191C1F] hover:text-white " />
                       </Link>
                       <Link
-                        className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px]"
+                        className="flex scale-0 group-hover:scale-100 ease-in-out duration-500 items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px]"
                         to="#"
                       >
-                        <LucideShoppingCart   size={24} className="text-[#191C1F]"/>
+                        <LucideShoppingCart
+                          size={24}
+                          className="text-[#191C1F]"
+                        />
                       </Link>
                       <Link
-                        className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px]"
-                        to="#"
+                        className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px] translate-x-[70px] group-hover:translate-x-[0px] transition-transform ease-in-out duration-400 "
+                        to={`/product/${product.id}`}
                       >
-                        <LucideEye  size={24} className="text-[#191C1F]" />
+                        <LucideEye size={24} className="text-[#191C1F]" />
                       </Link>
                     </div>
                   </div>
