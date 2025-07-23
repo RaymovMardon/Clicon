@@ -15,6 +15,7 @@ interface Product {
   images?: string[];
   price: number;
   description: string;
+  rating: number;
 }
 
 const ProductDetails = () => {
@@ -91,7 +92,7 @@ const ProductDetails = () => {
                   <FaStar key={idx} className="text-yellow-400" />
                 ))}
                 <FaStar className="text-gray-300" />
-                <span className="font-semibold text-gray-800 ml-2">4.7 Star Rating</span>
+                <span className="font-semibold text-gray-800 ml-2">{product?.rating} Star Rating</span>
                 <span className="text-gray-600">(21,671 User feedback)</span>
               </div>
               <h2 className="text-2xl font-semibold text-gray-900">{product.title}</h2>
