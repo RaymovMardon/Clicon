@@ -1,3 +1,4 @@
+
 import Accesuar from "@/components/accesuar"
 import Bannerpage from "@/components/banner"
 import BannerPageLaptop from "@/components/banner2"
