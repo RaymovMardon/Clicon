@@ -103,6 +103,12 @@ function Electronics() {
             </div>
             <div className="w-full">
               <img src="/images/noutbook.jpg" alt="noutbook" />
+            <div className="w-full h-[410px] ">
+              <img
+                className="w-full h-full "
+                src="/images/noutbook.jpg"
+                alt="noutbook"
+              />
             </div>
           </div>
           <div className="w-full">
@@ -140,7 +146,8 @@ function Electronics() {
                 </li>
               </ul>
             </div>
-            <div className="grid grid-cols-2 py-[5px] md:grid-cols-3 lg:grid-cols-4 gap-5 mt-2">
+
+            <div className="grid grid-cols-2 py-[5px] md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
               {loading ? (
                 <div className="w-[1000px] h-[700px] flex items-center justify-center bg-white">
                   <div className="loader"></div>
@@ -151,35 +158,39 @@ function Electronics() {
                     key={item.id}
                     className="group relative border-2 border-[#E4E7E9] p-4 rounded shadow hover:shadow-lg transition-all"
                   >
-                    <div className="relative  flex items-center justify-center w-full h-[180px] mb-3 rounded-md overflow-hidde">
-                      <div className="">
-                      <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:slace-[1.2] transition-transform duration-300 mb-3"
-                      />
+
+                    <div className="relative  flex items-center justify-center w-full h-[195px] mb-3 rounded-md overflow-hidde">
+                      <div className="w-full h-[180px] ">
+                        <img
+                          src={item.thumbnail}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div className="absolute inset-0 flex items-center justify-center gap-3 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 flex rounded-[5px] items-center justify-between px-3 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300">
                         <Link
+                          className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] translate-x-[-70px] group-hover:translate-x-[0px] transition-transform ease-in-out duration-400 rounded-[50%] w-[50px] h-[50px]"
                           to="#"
-                          className="flex items-center justify-center w-10 h-10 rounded-full bg-white hover:bg-[#FA8232] transition-colors"
                         >
-                          <LucideHeart size={20} className="text-[#191C1F]" />
+                          <LucideHeart
+                            size={24}
+                            className="text-[#191C1F]  transition-colors duration-300"
+                          />
                         </Link>
                         <Link
+                          className="flex scale-0 group-hover:scale-100 ease-in-out duration-500 items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px]"
                           to="#"
-                          className="flex items-center justify-center w-10 h-10 rounded-full bg-white hover:bg-[#FA8232] transition-colors"
                         >
                           <LucideShoppingCart
-                            size={20}
+                            size={24}
                             className="text-[#191C1F]"
                           />
                         </Link>
                         <Link
-                          to="#"
-                          className="flex items-center justify-center w-10 h-10 rounded-full bg-white hover:bg-[#FA8232] transition-colors"
+                          className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px] translate-x-[70px] group-hover:translate-x-[0px] transition-transform ease-in-out duration-400 "
+                          to={`/product/${item.id}`}
                         >
-                          <LucideEye size={20} className="text-[#191C1F]" />
+                          <LucideEye size={24} className="text-[#191C1F]" />
                         </Link>
                       </div>
                     </div>
