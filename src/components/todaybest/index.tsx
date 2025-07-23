@@ -3,11 +3,11 @@ import { LucideEye, LucideHeart, LucideShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function TodayBestDeals() {
   const [selected, setSelected] = useState<any[]>([]);
-  const {id} = useParams()
+
   const GetItems = async () => {
     try {
       const res = await axios.get(
@@ -111,7 +111,7 @@ function TodayBestDeals() {
               <div className="flex items-center h-[55px] justify-between ">
                 <Link
                   className="flex items-center justify-center rounded-[3px] bg-[#FFE7D6] w-[55px] h-full "
-                  to="#"
+                  to="/favorite"
                 >
                   <LucideHeart className="text-[#191C1F] " />
                 </Link>
@@ -126,7 +126,7 @@ function TodayBestDeals() {
                 </Link>
                 <Link
                   className="flex  items-center justify-center rounded-[3px] bg-[#FFE7D6] w-[55px] h-full"
-                  to="#"
+                  to="/product"
                 >
                   <LucideEye className="text-[#191C1F] " />
                 </Link>
@@ -141,22 +141,25 @@ function TodayBestDeals() {
                   }
                      ${index % 4 !== 3 ? "border-r" : ""}`}
                 >
-                  <div className="relative w-full h-[220px] mb-3 overflow-hidden">
+                  <div className="relative  w-full h-[220px] mb-3 overflow-hidden">
                     <img
                       src={product.thumbnail}
                       alt={product.title}
-                      className="w-60 h-55 object-cover  mb-5"
+                      className="w-60 h-55 group-hover:scale-115 transition-transform ease-in-out duration-300 object-cover  mb-5"
                     />
                     <div className="absolute inset-0 flex rounded-[5px] items-center justify-between px-3 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300">
                       <Link
                         className="flex items-center group justify-center bg-[white] hover:bg-[#FA8232] translate-x-[-70px] group-hover:translate-x-[0px] transition-transform ease-in-out duration-400 rounded-[50%] w-[50px] h-[50px]"
-                        to="#"
+                        to="/favorite"
                       >
-                        <LucideHeart size={24} className="text-[#191C1F] hover:text-white " />
+                        <LucideHeart
+                          size={24}
+                          className="text-[#191C1F]  transition-colors duration-300"
+                        />
                       </Link>
                       <Link
                         className="flex scale-0 group-hover:scale-100 ease-in-out duration-500 items-center group justify-center bg-[white] hover:bg-[#FA8232] rounded-[50%] w-[50px] h-[50px]"
-                        to="#"
+                        to="/card"
                       >
                         <LucideShoppingCart
                           size={24}

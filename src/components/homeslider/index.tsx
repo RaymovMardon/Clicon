@@ -42,8 +42,8 @@ function HomeSlider() {
 
   return (
     <div>
-      <div className="conatiner relative mx-auto max-w-[1280px] ">
-        <div className="relative flex items-center bg-white py-10">
+      <div className="container relative mx-auto max-w-[1280px] ">
+        <div className="relative  flex items-center bg-white py-[20px] ">
           <div className="absolute left-[-15px] -translate-y-0.5 z-10">
             <button
               className=" bg-orange-400 text-white w-[30px] h-[30px] flex justify-center items-center rounded-[30px] "
@@ -60,7 +60,7 @@ function HomeSlider() {
               <FaArrowRightLong />
             </button>
           </div>
-          <div className="overflow-hidden ">
+          <div className="overflow-hidden h-[230px] flex items-center ">
             <div
               className="flex gap-4 transition-transform duration-500 ease-in-out"
               style={{
@@ -70,7 +70,7 @@ function HomeSlider() {
               {uzunCard.map((product) => (
                 <div
                   key={product.id}
-                  className="w-[200px] h-[210px] flex flex-col justify-center items-center py-[10px] flex-shrink-0 rounded-xl shadow bg-gray-100"
+                  className="w-[200px] hover:scale-105 h-[210px] flex flex-col justify-center items-center py-[10px] flex-shrink-0 rounded-xl shadow bg-gray-100"
                 >
                   <div className="w-[150px] h-[150px] ">
                     <img

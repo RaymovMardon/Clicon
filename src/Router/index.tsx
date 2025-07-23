@@ -7,6 +7,8 @@ import ProductDetails from "../pages/product/index";
 import BlogPage from "../pages/blog"
 import NotFound from "../pages/notFound";
 import UserP from "../pages/user";
+import CardPage from "../pages/card";
+import FavoritePage from "../pages/favorite";
 
 export const router = createBrowserRouter([{
     path:"/",
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([{
         {
             path:"/user",
             element:<UserP/>
+        },
+        {
+            path:"/card",
+            element:<CardPage/>
+        },
+        {
+            path:"/favorite",
+            element:<FavoritePage/>
         }
     ]
 }])

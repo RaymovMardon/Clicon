@@ -16,6 +16,7 @@
     "@mui/material": "^7.2.0",
     "@radix-ui/react-navigation-menu": "^1.2.13",
     "@radix-ui/react-select": "^2.2.5",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.1.11",
     "antd": "^5.26.5",
     "axios": "^1.10.0",

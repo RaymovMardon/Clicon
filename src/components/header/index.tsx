@@ -1,5 +1,6 @@
+import axios from "axios";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaCheck,
   FaFacebook,
@@ -58,6 +59,11 @@ interface Category {
   label: string;
   subItems: string[];
 }
+interface Product {
+  id: number;
+  title: string;
+  thumbnail: string;
+}
 const categories: Category[] = [
   {
     label: "Computer & Laptop",
@@ -109,9 +115,32 @@ function Header() {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState<string>("");
   const [open, setOpen] = useState(false);
-
   const [isValute, setValute] = useState(false);
   const [selectedValute, setSelectedValute] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filtered, setFiltered] = useState<Product[]>([]);
+  const GetItem = async () => {
+    try {
+      const res = await axios.get("https://dummyjson.com/products?limit=100");
+      setProducts(res.data.products);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    GetItem();
+  }, []);
+  useEffect(() => {
+    if (search.trim()) {
+      const result = products.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setFiltered(result);
+    } else {
+      setFiltered([]);
+    }
+  }, [search, products]);
   const handleSelectLang = (value: string) => {
     setSelectedLang(value);
     setIsLangOpen(false);
@@ -252,21 +281,47 @@ function Header() {
                   />
                 </Link>
               </div>
-              <form className="flex justify-between px-[20px] w-[700px] h-[45px] rounded-[3px] bg-white">
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="flex justify-between px-[20px] w-[700px] h-[45px] rounded-[3px] bg-white"
+              >
                 <input
+                  onChange={(e) => setSearch(e.target.value)}
                   className="font-[Public_sans] text-[14px] text-[#77878F] font-[400] outline-none w-[550px] "
                   type="text"
+                  value={search}
                   placeholder="Search for anything..."
                 />
                 <button>
                   <img src="/images/search.svg" alt="search" />
                 </button>
+                {filtered.length > 0 && (
+                  <div className="absolute top-[110px] w-[700px] left-[395px] bg-white border border-gray-200 rounded-md shadow-md max-h-[250px] overflow-y-auto z-50">
+                    {filtered.map((product) => (
+                      <Link
+                        to={`/product/${product.id}`}
+                        key={product.id}
+                        onClick={()=>setSearch("")}
+                        className="flex items-center gap-4 px-4 py-2 hover:bg-gray-100"
+                      >
+                        <img
+                          src={product.thumbnail}
+                          alt={product.title}
+                          className="w-10 h-10 object-cover rounded"
+                        />
+                        <span className="text-sm text-black">
+                          {product.title}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </form>
               <div className="flex items-center gap-5">
-                <Link to="/#">
+                <Link to="/card">
                   <FiShoppingCart className="text-[28px] text-white" />
                 </Link>
-                <Link to="/#">
+                <Link to="/favorite">
                   <FaRegHeart className="text-[28px] text-white" />
                 </Link>
                 <Link to="/user">

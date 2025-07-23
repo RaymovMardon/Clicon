@@ -1,38 +1,46 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-
+interface Product {
+  id:number,
+  title:string,
+  description:string,
+  images:string
+}
 function Hero() {
   const [current, setCurrent] = useState(0);
-  const images = [
-    {
-      img: "/images/joistik.png",
-      title: "Yangi kolleksiya 2025",
-    },
-    {
-      img: "/images/joistik.png",
-      title: "Yangi kolleksiya 2025",
-    },
-    {
-      img: "/images/joistik.png",
-      title: "Yangi kolleksiya 2025",
-    },
-  ];
+  const [product,setProduct] = useState<Product[]>([])
+  const GetItem = async () => {
+    try{
+      const res = await axios.get("https://dummyjson.com/products/category/motorcycle")
+      setProduct(res.data.products)
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+  useEffect(()=>{
+    GetItem()
+  },[])
+  
 
   useEffect(() => {
-    const interval:NodeJS.Timeout = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000);
+    if (product.length === 0) return;
 
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % Math.min(3, product.length));
+    }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [product]);
+  
   return (
     <div className="container mx-auto max-w-[1280px] ">
       <div className="">
         <div className="flex py-[30px] gap-4">
           <div className="w-full mx-auto ">
             <div className="relative w-full h-[520px] overflow-hidden rounded-xl shadow-lg">
-              {images.map((slide, index) => (
+              {product.slice(0,3).map((slide, index) => (
                 <div
                   key={index}
                   className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
@@ -41,7 +49,7 @@ function Hero() {
                 >
                   <div className="absolute z-10 right-10 top-[60px] w-[350px] h-[350px] ">
                     <img
-                      src={slide.img}
+                      src={slide.images[0]}
                       alt={`Slide ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
@@ -57,15 +65,14 @@ function Hero() {
                         THE BEST PLACE TO PLAY
                       </span>
                     </a>
-                    <h2 className="font-[Public_Sans] py-[10px] text-[black] font-[600] text-[48px] leading-[56px] tracking-[0px]  ">
-                      Xbox Consoles
+                    <h2 className="font-[Public_Sans] py-[10px] w-[420px] text-[black] font-[600] text-[48px] leading-[56px] tracking-[0px]  ">
+                      {slide.title}
                     </h2>
-                    <p className="font-[Public_Sans] pb-[20px] w-[370px] font-[400] text-[18px] leading-[24px] tracking-[0px] ">
-                      Save up to 50% on select Xbox games. Get 3 months of PC
-                      Game Pass for $2 USD.
+                    <p className="font-[Public_Sans] w-[300px] font-[400] text-[18px] leading-[24px] tracking-[0px] line-clamp-2 ">
+                      {slide.description}
                     </p>
                     <Link
-                      className="bg-[#FA8232] hover:bg-[#F2F4F5] border-2 group border-[#F2F4F5] hover:border-[#FA8232] inline-flex rounded-[3px] text-[white] uppercase items-center gap-[10px]  px-[20px] py-[8px]  "
+                      className="bg-[#FA8232] mt-[15px] hover:bg-[#F2F4F5] border-2 group border-[#F2F4F5] hover:border-[#FA8232] inline-flex rounded-[3px] text-[white] uppercase items-center gap-[10px]  px-[20px] py-[8px]  "
                       to="/shop"
                     >
                       <span className="font-[Public_Sans] group-hover:text-[black] text-[14px] font-[700] leading-[32px] tarcking-[1.2%]  ">
@@ -77,7 +84,7 @@ function Hero() {
                 </div>
               ))}
               <div className="absolute bottom-10 left-[80px] -translate-x-1/2 flex gap-2 z-20">
-                {images.map((_, index) => (
+                {product.slice(0,3).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrent(index)}
