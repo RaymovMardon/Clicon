@@ -1,13 +1,15 @@
 {
-
   "compilerOptions": {
+    "composite": true,
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/lib/*": ["src/lib/*"]
-    }
+    },
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
