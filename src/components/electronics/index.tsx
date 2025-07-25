@@ -110,6 +110,7 @@ function Electronics() {
                 alt="noutbook"
               />
             </div>
+            </div>
           </div>
           <div className="w-full">
             <div className="flex justify-between items-center flex-wrap gap-4">
@@ -209,7 +210,7 @@ function Electronics() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Electronics;
