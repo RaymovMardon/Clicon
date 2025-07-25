@@ -101,15 +101,8 @@ function Electronics() {
                 <FaArrowRightLong className="group-hover:text-black" />
               </Link>
             </div>
-            <div className="w-full">
+            <div className="w-full h-full">
               <img src="/images/noutbook.jpg" alt="noutbook" />
-            <div className="w-full h-[410px] ">
-              <img
-                className="w-full h-full "
-                src="/images/noutbook.jpg"
-                alt="noutbook"
-              />
-            </div>
             </div>
           </div>
           <div className="w-full">
