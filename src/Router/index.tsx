@@ -6,6 +6,7 @@ import FaqPage from "../pages/faq";
 import BlogPage from "../pages/blog"
 import NotFound from "../pages/notFound";
 import UserP from "../pages/user";
+import ProductDetails from "../pages/product/index";
 import CardPage from "../pages/card";
 import FavoritePage from "../pages/favorite";
 
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([{
         },
         {
             path:"/product/:id",
-            element:<ProductDetails/>
+            element:<ProductDetails />
         },
         {
             path:"/user",

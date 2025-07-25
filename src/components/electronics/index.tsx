@@ -101,12 +101,15 @@ function Electronics() {
                 <FaArrowRightLong className="group-hover:text-black" />
               </Link>
             </div>
+            <div className="w-full">
+              <img src="/images/noutbook.jpg" alt="noutbook" />
             <div className="w-full h-[410px] ">
               <img
                 className="w-full h-full "
                 src="/images/noutbook.jpg"
                 alt="noutbook"
               />
+            </div>
             </div>
           </div>
           <div className="w-full">
@@ -144,6 +147,7 @@ function Electronics() {
                 </li>
               </ul>
             </div>
+
             <div className="grid grid-cols-2 py-[5px] md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
               {loading ? (
                 <div className="w-[1000px] h-[700px] flex items-center justify-center bg-white">
@@ -155,6 +159,7 @@ function Electronics() {
                     key={item.id}
                     className="group relative border-2 border-[#E4E7E9] p-4 rounded shadow hover:shadow-lg transition-all"
                   >
+
                     <div className="relative  flex items-center justify-center w-full h-[195px] mb-3 rounded-md overflow-hidde">
                       <div className="w-full h-[180px] ">
                         <img
@@ -205,7 +210,7 @@ function Electronics() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Electronics;
