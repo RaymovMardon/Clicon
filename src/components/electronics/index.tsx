@@ -202,6 +202,7 @@ function Electronics() {
           </div>
         </div>
       </div>
+      </div>
     </div>
   )
 }

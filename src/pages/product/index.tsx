@@ -1,12 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { FaFacebook, FaRegCopy, FaRegHeart, FaStar, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaHeart, FaRegCopy, FaRegHeart, FaStar, FaTwitter } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { HiMiniArrowPath } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs } from 'swiper/modules';
-import ProductGridSections from '@/components/card';
-// import Index1 from '@/components/card/index1';
+import Index1 from '@/components/card/index1';
 
 interface Product {
   id: number;
@@ -16,58 +15,44 @@ interface Product {
   price: number;
   description: string;
   rating: number;
+  category: string;
 }
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
-  const [ setThumbsSwiper] = useState<any>(null);
+  const [setThumbsSwiper] = useState<any>(null);
   const [mainImage, setMainImage] = useState<string>('');
   const [count, setCount] = useState(1);
+  const [liked, setLiked] = useState(false);
+  const toggleLike = () => setLiked((prev) => !prev); 
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        const fakeImages = data?.images;
-        setProduct({ ...data, images: fakeImages });
-        setMainImage(data.image);
-        if (fakeImages && fakeImages.length > 0) {
-          setMainImage(fakeImages[0]);
-        }        
+        setProduct({ ...data });
+        setMainImage(data.images?.[0] || data.image);
       });
   }, [id]);
 
-  const Increment = () => {
-    setCount(count + 1);
-  };
-
-  const Decrement = () => {
-    if (count > 1 ) {
-      setCount(count - 1);
-    }
-  };
+  const Increment = () => setCount((prev) => prev + 1);
+  const Decrement = () => setCount((prev) => (prev > 1 ? prev - 1 : 1));
 
   const handleAddToCart = () => {
     if (!product) return;
-    navigate('/shop', {
-      state: {
-        product,
-        quantity: count
-      }
+    navigate('', {
+      state: { product, quantity: count }
     });
   };
-  
+
   const handleBuyNow = () => {
     if (!product) return;
-    navigate('/user', {
-      state: {
-        product,
-        quantity: count
-      }
+    navigate('', {
+      state: { product, quantity: count }
     });
-  };
+  };  
 
   if (!product) return <div className="text-center">Yuklanmoqda...</div>;
 
@@ -78,10 +63,15 @@ const ProductDetails = () => {
           <main className="flex flex-col md:flex-row gap-6">
             <div className="md:w-1/2">
               <img src={mainImage} alt="product" className="w-full rounded-md h-[340px] object-cover" />
-              <Swiper onSwiper={setThumbsSwiper} slidesPerView={5} spaceBetween={10} modules={[Thumbs]} className="mt-4 overflow-hidden flex justify-between">
-                {product.images?.map((img, index) => (
-                  <SwiperSlide key={index} >
-                    <img src={img} onClick={() => setMainImage(img)} className="w-full h-22 py-2 object-cover bg-gray-200 border border-gray-300 rounded cursor-pointer hover:scale-105 duration-75" />
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                slidesPerView={5}
+                spaceBetween={10}
+                modules={[Thumbs]}
+                className="mt-4" >
+                {product.images?.map((img, idx) => (
+                  <SwiperSlide key={idx}>
+                    <img src={img} onClick={() => setMainImage(img)} className="w-full h-20 object-cover border border-gray-300 rounded cursor-pointer hover:scale-105 duration-75"/>
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -92,50 +82,42 @@ const ProductDetails = () => {
                   <FaStar key={idx} className="text-yellow-400" />
                 ))}
                 <FaStar className="text-gray-300" />
-                <span className="font-semibold text-gray-800 ml-2">{product?.rating} Star Rating</span>
+                <span className="font-semibold text-gray-800 ml-2">{product.rating} Star Rating</span>
                 <span className="text-gray-600">(21,671 User feedback)</span>
               </div>
               <h2 className="text-2xl font-semibold text-gray-900">{product.title}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                <div className="flex gap-2"><span className="text-gray-600">Sku:</span><span className="font-medium">A264671</span></div>
-                <div className="flex gap-2"><span className="text-gray-600">Brand:</span><span className="font-medium">Apple</span></div>
+                <div className="flex gap-2"><span className="text-gray-600">Category:</span><span className="font-medium">{product.category}</span></div>
                 <div className="flex gap-2"><span className="text-gray-600">Availability:</span><span className="font-medium text-green-600">In Stock</span></div>
-                <div className="flex gap-2"><span className="text-gray-600">Category:</span><span className="font-medium">Electronics Devices</span></div>
-
-                </div>
+              </div>
               <div className="flex items-center gap-4">
-                <h2 className="text-2xl text-blue-500 font-semibold">${product.price*count}</h2>
-                <p className="text-lg text-gray-500 line-through">${(product.price * 1.2 * count).toFixed(2)}</p>
+                <h2 className="text-2xl text-blue-500 font-semibold">
+                  ${Math.round(product.price * count)}
+                </h2>
+                <p className="text-lg text-gray-500 line-through">
+                  ${Math.round(product.price * 1.2 * count).toFixed(2)}
+                  </p>
                 <button className="bg-yellow-400 text-black text-sm font-bold px-3 py-1 rounded">20% OFF</button>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-8 py-6">
-                <div className="flex items-center border rounded-md px-4 py-2 gap-6 text-xl font-bold">
+                <div className="flex items-center border rounded-md px-4 py-[9px] gap-6 text-xl font-bold">
                   <button onClick={Decrement} className="cursor-pointer px-2 hover:bg-gray-100">-</button>
                   <span>{count}</span>
                   <button onClick={Increment} className="cursor-pointer px-2 hover:bg-gray-100">+</button>
                 </div>
-                <button onClick={handleAddToCart} className="flex items-center text-white gap-2 px-14 py-2.5 rounded-md font-[600] bg-[#FA8232] hover:opacity-85 active:scale-96 cursor-pointer duration-325">Add to Cart <SlBasket /></button>
-                <button onClick={handleBuyNow} className="border border-[#FA8232] px-8 py-2.5 rounded-md text-gray-800 font-[600] hover:opacity-85 active:scale-96 cursor-pointer duration-325">Buy Now</button>
+                <button onClick={handleAddToCart} className="flex items-center text-white gap-2 px-10 py-3 rounded-md font-[600] bg-[#FA8232] hover:opacity-85 active:scale-95 duration-470 cursor-pointer">Add to Cart <SlBasket /></button>
+                <button onClick={handleBuyNow} className="border border-[#FA8232] px-8 py-[11px] rounded-md text-gray-800 font-[600] hover:opacity-85 active:scale-95 duration-460 cursor-pointer">Buy Now</button>
               </div>
               <div className="flex flex-wrap items-center gap-6 text-sm text-gray-700">
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <FaRegHeart />
+                <div onClick={toggleLike} className="flex items-center gap-2 cursor-pointer">
+                  {liked ? (<FaHeart className='text-red-500 text-lg'/>) 
+                  :
+                  (<FaRegHeart className='text-lg' /> )
+                  }
                   <p>Add to Wishlist</p>
                 </div>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <HiMiniArrowPath />
-                  <p>Add to Compare</p>
-                </div>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <p>Share:</p>
-                  <FaRegCopy />
-                  <FaFacebook />
-                  <FaTwitter />
-                </div>
-              </div>
-              <div className="pt-4">
-                <p className="font-medium text-gray-800 mb-2">100% Guarantee Safe Checkout</p>
-                <img src="/images/payProduct.png" alt="secure-payment" className="w-full max-w-[300px]" />
+                <div className="flex items-center gap-2 cursor-pointer"><HiMiniArrowPath /><p>Add to Compare</p></div>
+                <div className="flex items-center gap-2 cursor-pointer"><p>Share:</p><FaRegCopy /><FaFacebook /><FaTwitter /></div>
               </div>
             </div>
           </main>
@@ -189,9 +171,7 @@ const ProductDetails = () => {
         </div>
       </section>
 
-      {/* <Index1 /> */}
-
-      <ProductGridSections />
+      <Index1 category={product.category} excludeId={product.id} />
     </>
   );
 };
