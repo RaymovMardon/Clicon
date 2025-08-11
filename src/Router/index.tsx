@@ -9,6 +9,7 @@ import UserP from "../pages/user";
 import ProductDetails from "../pages/product/index";
 import CardPage from "../pages/card";
 import FavoritePage from "../pages/favorite";
+import Supportpage from "../pages/support";
 
 export const router = createBrowserRouter([{
     path:"/",
@@ -49,6 +50,11 @@ export const router = createBrowserRouter([{
         {
             path:"/favorite",
             element:<FavoritePage/>
+        },
+        {
+            path:"/support",
+            element:<Supportpage/>
         }
+        
     ]
 }])

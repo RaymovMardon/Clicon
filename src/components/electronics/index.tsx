@@ -69,6 +69,7 @@ function Electronics() {
   };
 
   return (
+    <>
     <div>
       <div className="container mx-auto py-[30px] max-w-[1280px]">
         <div className="flex gap-4 flex-col lg:flex-row">
@@ -203,7 +204,8 @@ function Electronics() {
         </div>
       </div>
       </div>
-    </div>
+    
+    </>
   )
 }
 

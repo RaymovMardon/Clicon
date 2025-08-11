@@ -402,7 +402,7 @@ function Header() {
               <div className="flex">
                 <Link
                   className="flex justify-center items-center group gap-1"
-                  to="/track-order"
+                  to="/support"
                 >
                   <PiHeadphones className="w-[24px] h-[24px] group-hover:text-[#FA8232] text-[#5F6C72] " />
                   <span className="text-[14px] font-[500] font-[Public_Sans] text-[#5F6C72] group-hover:text-[#FA8232] ">
