@@ -1,4 +1,6 @@
 import img1 from "../../../public/images/support.jpg"
+import img2 from "../../../public/images/call.png"
+import img3 from "../../../public/images/msg.png"
 import { FaTruck, FaKey, FaCreditCard, FaUser, FaHeart, FaBoxOpen, FaShoppingCart, FaStore } from "react-icons/fa";
 function Supportpage() {
     const items:any = [
@@ -19,7 +21,7 @@ function Supportpage() {
     return (
         <>
         <div className="bg-[#F2F4F5] h-[72px]"></div>
-        <section className="w-full bg-white py-8">
+        <section className="w-full bg-white py-5">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-6 px-4">
         
         {/* Левая часть */}
@@ -95,6 +97,41 @@ function Supportpage() {
           ))}
         </div>
       </div>
+    </section>
+    <section className="bg-[#F2F4F5]">
+        <div className="container mx-auto max-w-[1280px]">
+        <h2 className="text-center text-xl md:text-2xl font-semibold mb-8">
+        Don’t find your answer. <br /> Contact with us
+        </h2> 
+        <div className="flex gap-6">
+            <div className="flex p-8 rounded-sm gap-6 bg-white"><div className=" flex justify-center">
+          <img
+            src={img2} // замените на вашу картинку
+            alt="call"
+            className="w-full max-w-sm object-contain"
+          />
+        </div><div className="flex flex-col items-baseline gap-1">
+            <h3 className="text-lg font-semibold">Call us now</h3>
+            <p className="text-[14px] text-gray-600 font-normal">we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk with use now</p>
+            <h4 className="text-2xl font-semibold">+1-202-555-0126</h4>
+            <a className="bg-[#2DA5F3] px-6 py-1.5 text-white">Call now</a>
+            </div></div>
+            <div className="flex p-8 rounded-sm gap-6 bg-white">
+            <div className=" flex justify-center">
+          <img
+            src={img3} // замените на вашу картинку
+            alt="msg"
+            className="w-full max-w-sm object-contain"
+          />
+        </div> <div className="flex flex-col items-baseline gap-1">
+            <h3 className="text-lg font-semibold">Call us now</h3>
+            <p className="text-[14px] text-gray-600 font-normal">we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk with use now</p>
+            <h4 className="text-2xl font-semibold">+1-202-555-0126</h4>
+            <a className="bg-[#2DB224] px-6 py-1.5 text-white">Call now</a>
+            </div> 
+            </div>
+            </div> 
+        </div>
     </section>
         </>
     );
