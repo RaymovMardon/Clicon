@@ -100,6 +100,9 @@ function Supportpage() {
     </section>
     <section className="bg-[#F2F4F5] py-16">
         <div className="container mx-auto max-w-[1280px]">
+            <div className="flex flex-col">
+        <a href="tel:+1-202-555-0126" className="bg-[#2DA5F3]  my-4 mx-auto px-6 py-1.5 transition-all text-white hover:bg-blue-500">CONTACT US</a>
+        </div>
         <h2 className="text-center text-xl md:text-2xl font-semibold mb-8">
         Don’t find your answer. <br /> Contact with us
         </h2> 
