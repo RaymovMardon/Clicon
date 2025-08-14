@@ -24,6 +24,21 @@
   width: 64px;
   height: 64px;
 }
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: black;
+  
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.ant-tabs .ant-tabs-tab-btn {
+   color:#77878F;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+}
 .loader:after {
   content: " ";
   display: block;
@@ -44,6 +59,5 @@
     transform: rotate(360deg);
   }
 }
-
 
 @import "tw-animate-css";

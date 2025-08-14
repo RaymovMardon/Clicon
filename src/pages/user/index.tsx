@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from "react";
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
 import styles from "./user.module.scss"
 const onChange = (key: string) => {
   console.log(key);
@@ -90,7 +92,24 @@ const UserP: React.FC = () => {
                 <input className="p-1.5 border-1 rounded-xs border-gray-300 w-full" name="input5" type="text" placeholder="Enter something..." />
                 <label>Password</label>
                 <input className="p-1.5 border-1 rounded-xs border-gray-300 w-full" name="input6" type="password" placeholder="8+ charachters" />
-                <button className="w-full" type="submit">Submit</button>
+                <button className="w-full" type="submit">Submit </button>
+                <div className="flex items-center my-6">
+        <div className="flex-grow h-px bg-gray-300"></div>
+        <span className="mx-3 text-gray-500 text-sm">or</span>
+        <div className="flex-grow h-px bg-gray-300"></div>
+      </div>
+
+      {/* Google login */}
+      <div className="w-full flex !bg-[white] cursor-not-allowed text-center items-center gap-3 border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition">
+        <FcGoogle className="text-xl" />
+        <span className="text-gray-700 text-center text-sm font-medium">Login with Google</span>
+      </div>
+
+      {/* Apple login */}
+      <div className="w-full flex !bg-[white] cursor-not-allowed items-center gap-3 border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition mt-3">
+        <FaApple className="text-xl text-black" />
+        <span className="text-gray-700 text-sm font-medium">Login with Apple</span>
+      </div>
               </form>
             </div>
           ),
@@ -112,6 +131,22 @@ const UserP: React.FC = () => {
                 <input className="p-1.5 border-1 rounded-xs border-gray-300 w-full" name="input4" type="password" placeholder="" />
                 
                 <button className="w-full" type="submit">Submit</button>
+                <div className="flex items-center my-6">
+        <div className="flex-grow h-px bg-gray-300"></div>
+        <span className="mx-3 text-gray-500 text-sm">or</span>
+        <div className="flex-grow h-px bg-gray-300"></div>
+      </div>
+                <div className="w-full flex !bg-[white] cursor-not-allowed text-center items-center gap-3 border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition">
+        <FcGoogle className="text-xl" />
+        <span className="text-gray-700 text-center text-sm font-medium">Login with Google</span>
+      </div>
+
+      {/* Apple login */}
+      <div className="w-full flex !bg-[white] cursor-not-allowed items-center gap-3 border border-gray-300 rounded-md py-3 px-4 hover:bg-gray-50 transition mt-3">
+        <FaApple className="text-xl text-black" />
+        <span className="text-gray-700 text-sm font-medium">Login with Apple</span>
+      </div>
+              
               </form>
             </div>
           ),

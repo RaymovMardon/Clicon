@@ -101,7 +101,7 @@ function Supportpage() {
     <section className="bg-[#F2F4F5] py-16">
         <div className="container mx-auto max-w-[1280px]">
             <div className="flex flex-col">
-        <a href="tel:+1-202-555-0126" className="bg-[#2DA5F3]  my-4 mx-auto px-6 py-1.5 transition-all text-white hover:bg-blue-500">CONTACT US</a>
+        <a href="tel:+1-202-555-0126" className="bg-[#2DA5F3] rounded-[3px] my-4 mx-auto px-6 py-1.5 transition-all text-white hover:bg-blue-500">CONTACT US</a>
         </div>
         <h2 className="text-center text-xl md:text-2xl font-semibold mb-8">
         Don’t find your answer. <br /> Contact with us
@@ -117,7 +117,7 @@ function Supportpage() {
             <h3 className="text-lg font-semibold">Call us now</h3>
             <p className="text-[14px] text-gray-600 font-normal">we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk with use now</p>
             <h4 className="text-2xl font-semibold">+1-202-555-0126</h4>
-            <a href="tel:+1-202-555-0126" className="bg-[#2DA5F3] mt-1.5 px-6 py-1.5 transition-all text-white hover:bg-blue-500">CALL NOW</a>
+            <a href="tel:+1-202-555-0126" className="bg-[#2DA5F3] rounded-[3px] mt-1.5 px-6 py-1.5 transition-all text-white hover:bg-blue-500">CALL NOW</a>
             </div></div>
             <div className="flex items-start p-8 rounded-sm gap-6 bg-white shadow-lg transition-all hover:shadow-2xl">
             <div className=" flex justify-center">
@@ -130,7 +130,7 @@ function Supportpage() {
             <h3 className="text-lg font-semibold">Chat with us</h3>
             <p className="text-[14px] text-gray-600 font-normal">we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk with use now</p>
             <h4 className="text-2xl font-semibold">Support@clicon.com</h4>
-            <a href="mailto:support@clicon.com" className="bg-[#2DB224] mt-1.5  transition-all px-6 py-1.5 text-white hover:bg-green-600">CONTACT US</a>
+            <a href="mailto:support@clicon.com" className="bg-[#2DB224] rounded-[3px] mt-1.5  transition-all px-6 py-1.5 text-white hover:bg-green-600">CONTACT US</a>
             </div> 
             </div>
             </div> 
